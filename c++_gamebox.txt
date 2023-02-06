@@ -1,0 +1,362 @@
+#include<iostream>
+#include<cstdlib>
+#include<ctime>
+#include<cstring>
+using namespace std;
+void num_guess();
+void word_guess();
+void quiz();
+int main()
+{
+int choice;
+char a;
+do{
+cout<<"\n\t\t```````````````WELCOME TO A.M GAMEBOX```````````````";
+cout<<"\n\t1. QUIZ";
+cout<<"\n\t2. NUMBER GUESSING";
+cout<<"\n\t3. WORD MISSING";
+cout<<"\n ENTER THE NUMBER OF THE GAME YOU NEED TO PLAY:";
+cin>>choice;
+switch(choice)
+{
+case 1:
+quiz();
+break;
+case 2:
+num_guess();
+break;
+case 3:
+word_guess();
+break;
+default:
+cout<<"\nENTER THE CORRECT CHOICE";
+break;
+}
+cout<<"\n DO YOU WANT TO USE GAMEBOX AGAIN(Y/N):";
+cin>>a;
+}while(a=='y'||a=='Y');
+cout<<"\n\t\t***************THANKS FOR USING GAMEBOX***************";
+return 0;
+}
+void quiz()
+{
+int finalResult=0;
+char playAgain;
+int playQuiz(void);
+play:
+finalResult = playQuiz();
+cout<<"Your score is "<<finalResult<<endl;
+if(finalResult>=6){
+cout<<"You are pass"<<endl;
+cout<<"Do you want to play QUIZ again y or n?"<<endl;
+cin>>playAgain;
+if(playAgain=='y' || playAgain=='Y'){
+goto play;
+}
+else{
+cout<<"Thank you to play Quiz !"<<endl;
+}
+}
+else{
+cout<<"You are fail"<<endl;
+cout<<"Do you want to play QUIZ again y or n?"<<endl;
+cin>>playAgain;
+if(playAgain=='y' || playAgain=='Y'){
+playQuiz();
+}
+else{
+cout<<"Thank you to play Quiz !"<<endl;
+}
+}
+}
+int playQuiz(){
+char c;
+char option;
+int score=0;
+playInsideFunction:
+cout<<"----------Welcome to Quiz Game-------------"<<endl;
+cout<<"------Please follow the instructions------"<<endl;
+cout<<"Step 1 : Quiz contains total 10 questions"<<endl;
+cout<<"Step 2 : You will given 1 marks for each right ans"<<endl;
+cout<<"Step 3 : There will be no negataive marking"<<endl;
+cout<<"Step 4 : Please press 'S' to start the quiz"<<endl;
+cout<<"Step 5 : Please select option a, b, c, d (or) A,B,C,D"<<endl;
+cout<<"Step 6 :If you score >=6 , you will pass the quiz"<<endl;
+cin>>c;
+if(c=='s' || c=='S'){
+cout<<"Q1. What’s the shortcut for the “copy” function on most
+computers"<<endl;
+cout<<"(a) ctrl X (b) ctrl A (c) ctrl C (d) ctrl W"<<endl;
+cin>>option;
+if(option=='c' || option=='C'){
+score=score+1;
+}
+else{
+score=score+0;
+}
+cout<<"Q2. How many ghosts chase Pac-Man at the start of each game"<<endl;
+cout<<"(a) 1 (b) 2 (c) 3 (d) 4"<<endl;
+cin>>option;
+if(option=='d' || option=='D'){
+score=score+1;
+}
+else{
+score=score+0;
+}
+cout<<"Q3.Name of the Disney’s first film"<<endl;
+cout<<"(a) Ratatouille (b) Snow White (c) Mickey Mouse (d) Bolt"<<endl;
+cin>>option;
+if(option=='b' || option=='B'){
+score=score+1;
+}
+else{
+score=score+0;
+}
+cout<<"Q4. How many hearts does an Octopus Have"<<endl;
+cout<<"(a) 1 (b) 0 (c) 4 (d) 3"<<endl;
+cin>>option;
+if(option=='d' || option=='D'){
+score=score+1;
+}
+else{
+score=score+0;
+}
+cout<<"Q5.What’s the national flower of Japan"<<endl;
+cout<<"(a) Cherry Blossom (b) Chrysanthemum (c) Marigold (d) Dahlia"<<endl;
+cin>>option;
+if(option=='a' || option=='A'){
+score=score+1;
+}
+else{
+score=score+0;
+}
+cout<<"Q6. Who invented the World Wide Web"<<endl;
+cout<<"(a) Jeff Bezos (b) Bernard Arnault (c) Tim Berners-Lee (d) Mark Zuckerberg"<<endl;
+cin>>option;
+if(option=='c' || option=='C'){
+score=score+1;
+}
+else{
+score=score+0;
+}
+cout<<"Q7. How many minutes are in a full week"<<endl;
+cout<<"(a) 10,100 (b) 10,090 (c) 10,080 (d) 10,070"<<endl;
+cin>>option;
+if(option=='c' || option=='C'){
+score=score+1;
+}
+else{
+score=score+0;
+}
+cout<<"Q8. What is the slogan of Apple Inc."<<endl;
+cout<<"(a) Think Different (b) Dare to Leap (c) The Power to Do More (d)Never
+Settle"<<endl;
+cin>>option;
+if(option=='a' || option=='A'){
+score=score+1;
+}
+else{
+score=score+0;
+}
+cout<<"Q9. Who has directed the most MCU movies"<<endl;
+cout<<"(a) Sam Raimi (b) Russo Brothers (c) Taika Waititi (d) Zack
+Snyder"<<endl;
+cin>>option;
+if(option=='b' || option=='B'){
+score=score+1;
+}
+else{
+score=score+0;
+}
+cout<<"Q10. What five colours make up the Olympic rings"<<endl;
+cout<<"(a) Blue, Black, Green, Red and Yellow (b) Black,Violet,White,Green and Yellow (c) Blue,Brown,Gold,Red and Yellow (d) Red,Yellow,Green,Black and
+White "<<endl;
+cin>>option;
+if(option=='a' || option=='A'){
+score=score+1;
+}
+else{
+score=score+0;
+}
+}
+else{
+cout<<"You have enterd wrong value, please enter s"<<endl;
+goto playInsideFunction;
+}
+return score;
+}
+void num_guess()
+{
+srand(time(0));
+char play;
+cout<<"\n\t\t******NUMBER GUESSING GAME*****";
+int guess;
+int guesses=0;
+do
+{
+int random_number=(rand() % 100);
+cout<<"\nGUESS A NUMBER BETWEEN 1 TO 100";
+while(true)
+{
+cout<<"\nENTER THE NUMBER WHICH YOU HAVE GUESSED:";
+cin>>guess;
+if(guess>random_number)
+{
+cout<<"\n\tTHE NUMBER WHICH YOU
+HAVE GUESSED IS GREATER THAN THE NUMBER WHICH YOU NEED TO FIND";
+guesses; 
+}
+else if(guess<random_number)
+{
+cout<<"\n\tTHE NUMBER WHICH YOU
+HAVE GUESSED IS LESSER THAN THE NUMBER WHICH YOU NEED TO FIND";
+guesses++;
+}
+else
+{
+cout<<"\n CONGRATULATIONS YOU HAVE
+FOUND THE NUMBER";
+cout<<"\n THE NUMBER OF GUESSES YOU
+HAVE MADE:"<<guesses;
+break;
+}
+}
+cout<<"\n DO YOU WANT TO PLAY AGAIN(Y/N):";
+cout<<"\n";
+cin>>play;
+}while(play=='y'||play=='Y');
+cout<<"\n\t******THANKS FOR PLAYING******";
+}
+void word_guess()
+{
+const int MAX_TRIES = 5;
+int letterFill(char, string, string&);
+string name;
+string yes_or_no;
+char letter;
+int num_of_wrong_guesses = 0;
+string hint;
+string word;
+string words[] =
+{
+"mexico",
+"france",
+"italy","southafrica",
+"japan",
+"australia",
+"egypt",
+"singapore",
+"china",
+"turkey"
+};
+srand(time(NULL));
+int n = rand() % 10;
+word = words[n];
+switch (n)
+{
+case 0:
+hint = "Hint: This country shares a border with the USA";
+break;
+case 1:
+hint = "Hint: This country has the Eiffel tower";
+break;
+case 2:
+hint = "Hint: This country has the city called Rome";
+break;
+case 3:
+hint = "Hint: The country in which nelson Mandela was born";
+break;
+case 4:
+hint = "Hint: The country in which anime was created";
+break;
+case 5:
+hint = "Hint: This country has kangaroos";
+break;
+case 6:
+hint = "Hint: This country has giant pyramids";
+break;
+case 7:
+hint = "Hint: This country has a amazing airport called Changi Airport";
+break;
+case 8:
+hint = "Hint: This country has a place called Beijing.";
+break;
+case 9:
+hint = "Hint: This country has a place called Istanbul.";
+break;
+}
+string unknown(word.length(), ('_'));
+cout << "\n\nWelcome to the guessing game...Guess a country Name";
+cout << "\n\nEach letter is represented by a star.";
+cout << "\n\nYou have to type only one letter in one try";
+cout << "\n\nYou have " << MAX_TRIES << " tries to try and guess the word.";
+cout << "\n~~~~~~~~~~~~~~~" << endl;
+while (num_of_wrong_guesses < MAX_TRIES)
+{
+cout << endl << hint << endl;
+cout << "\n\n" << unknown;
+cout << "\n\nGuess a letter: ";
+cin >> letter;
+if (letterFill(letter, word, unknown) == 0)
+{
+cout << endl << "\nWhoops! That letter isn't in there!" << endl;
+num_of_wrong_guesses++;
+}
+else
+{
+cout << endl << "\nYou found a letter! Isn't that exciting!" << endl;
+}
+cout << "\n\You have " << MAX_TRIES - num_of_wrong_guesses;
+cout << " guesses left." << endl;
+if (word == unknown)
+{
+cout << word << endl;
+cout << "\nYeah! You got it!" << endl;
+cout << "\nWould like to play another round of guessing?" << endl;
+cout << "\nEnter yes or no" << endl;
+cin >> yes_or_no;
+if (yes_or_no == "yes")
+{
+word_guess;
+}
+if (yes_or_no == "no")
+{
+cout << "Closing program" << endl;
+}
+break;
+}
+}
+if (num_of_wrong_guesses == MAX_TRIES)
+{
+cout << "\nSorry, you lose." << endl;
+cout << "\nThe word was " << word << endl;
+cout << "\nWould like to play another round of guessing?" << endl;
+cout << "\nEnter yes or no" << endl;
+cin >> yes_or_no;
+if (yes_or_no == "yes")
+{
+word_guess();
+}
+if (yes_or_no == "no")
+{
+cout << "Closing program" << endl;
+}
+}
+}
+int letterFill(char guess, string secretword, string& guessword)
+{
+int i;
+int matches = 0;
+int len = secretword.length();
+for (i = 0; i < len; i++)
+{
+if (guess == guessword[i])
+return 0;
+if (guess == secretword[i])
+{
+guessword[i] = guess;
+matches++;
+}
+}
+return matches;
+}
